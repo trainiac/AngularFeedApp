@@ -1,0 +1,19 @@
+<div class="item">
+  <p class="item-caption">
+    <span class="item-author">{{ scope.item.author.name }}</span>
+    {{ scope.item.caption }}
+  </p>
+  <a wrap-if="{{scope.isInFeed}}" href="#/item/{{scope.item.item_id}}">
+    <img class="item-image" ng-src="{{ scope.item.image_url }}"/>
+  </a>
+  <ul class="item-comments">
+    <li class="item-comment" ng-repeat="comment in scope.item.comments">
+      <span class="item-author">{{ comment.author.name }}</span>
+      {{ comment.comment }}
+    </li>
+  </ul>
+  <form ng-submit="scope.addComment(scope.item, scope.formData)">
+    <input class="item-comment-text " ng-model="scope.formData.text" type="text" placeholder="Enter your comment"/>
+    <button tabindex="-1" class="item-comment-button" type="submit">Add comment</button>
+  </form>
+</div>
